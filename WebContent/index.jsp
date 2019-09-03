@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<h1>성적표</h1><br/><br/>
+
 <form id = "student" action="<%=request.getContextPath()%>/write.do">
 	주민번호  <input  type = "text"  name="jubun"/> <br/>
 	이름	 <input  type = "text"  name="name"/><br/>
@@ -17,12 +19,11 @@
 	수학	 <input  type = "text"  name="math"/><br/>
 	사회	 <input  type = "text"  name="soci"/><br/>
 	<input type="submit" value="전송"/><br/>
-</form>
+</form><br/>
 
 </body>
 <script>
 	$("#student").submit(function(){
-		alert("dddd");
 	});
 	
 </script>
