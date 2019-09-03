@@ -29,9 +29,9 @@ public class GradeServiceImpl implements GradeService {
 		
 		StudentBean sb = new StudentBean();
 		
-		sb = sDao.findStudent(param.getJubun());
-		System.out.println(sb.toString());
+		sb = sDao.findStudent(param.getJubun()); // Student.txt에서 학생이 존재하는지 찾는다.
 		
+		//학생이 명부에 없다면, 학번을 생성하고 명부에 입력한다.
 		if (sb.getHacbun()==null) {
 			String hb = makehacbun(param);
 			param.setHacbun(hb);
@@ -41,13 +41,15 @@ public class GradeServiceImpl implements GradeService {
 			sDao.insertStudent(sb);
 			
 		}else {
+			//학생이 명부에 있다면 param에 학번을 set한다.
 			param.setHacbun(sb.getHacbun());
 		}
 
-		
+		//학생의 성적을 각 학생의 성적표에 입력한다.
 		dao.insertGrade(param);
 	}
 
+	//학번을 생성한다.
 	public String makehacbun(GradeBean param) {
 		String result="";
 		Date dt = new Date();
@@ -61,13 +63,10 @@ public class GradeServiceImpl implements GradeService {
 		return result;
 	}
 
-	@Override
+	@Override // 학번을 확인하여 성적을 읽는다
 	public void readGrade(HttpServletRequest request, GradeBean param) throws IOException {
-		System.out.println(param.getJubun()+"sdfadfasdf");
-		StudentBean hb = sDao.findStudent(param.getJubun());
-		System.out.println(hb.toString());
+		StudentBean hb = sDao.findStudent(request.getParameter("jubun"));
 		param.setHacbun(hb.getHacbun());
-		System.out.println(param.toString());
 		request.setAttribute("student", dao.readeGrade(param));
 		return ;
 	}

@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.grade.web.daoImpls.StudentDaoImpl;
 import com.grade.web.daos.StudentDao;
 import com.grade.web.serviceImpls.GradeServiceImpl;
+import com.grade.web.serviceImpls.StudentServiceImpl;
 import com.grade.web.studentBeans.GradeBean;
 import com.grade.web.studentServices.GradeService;
+import com.grade.web.studentServices.StudentService;
 
 @WebServlet("*.do")
 public class GradeController extends HttpServlet {
@@ -45,20 +47,25 @@ public class GradeController extends HttpServlet {
 		param.setSoci(request.getParameter("soci"));
 		
 		String viewPage = null;
-		GradeService ss = new GradeServiceImpl();
+		GradeService gs = new GradeServiceImpl();
+		StudentService ss = new StudentServiceImpl();
 		
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
 		if(com.equals("/write.do")) {
-			ss = new GradeServiceImpl();
-			ss.createGrade(param);
+			gs = new GradeServiceImpl();
+			gs.createGrade(param);
 			viewPage = "/gradeScore.do";
 		} else if(com.equals("/gradeScore.do")) {
-			ss = new GradeServiceImpl();
-			ss.readGrade(request,param);
+			gs = new GradeServiceImpl();
+			gs.readGrade(request,param);
 			viewPage = "gradeScore.jsp";
+		} else if(com.equals("/studentList.do")) {
+			ss = new StudentServiceImpl();
+			ss.readAllStudent(request,response);
+			viewPage = "studentList.jsp";
 		} 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

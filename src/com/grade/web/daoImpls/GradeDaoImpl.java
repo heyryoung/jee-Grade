@@ -27,7 +27,7 @@ public class GradeDaoImpl implements GradeDao {
 	
 	@Override
 	public void insertGrade(GradeBean param) {
-		
+		//각 학생의 학번에 학생의 성적을 입력한다.
 		try {
 			File file = new File(FILE_PATH+param.getHacbun()+".txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
@@ -42,6 +42,7 @@ public class GradeDaoImpl implements GradeDao {
 	@Override
 	public GradeBean[] readeGrade(GradeBean param) throws IOException {
 		
+		//학생의 모든 성적을 읽어 반환한다.
 		GradeBean[] params = new GradeBean[10];
 		String str = "";
 		File file = new File(FILE_PATH+param.getHacbun()+".txt");
@@ -68,9 +69,6 @@ public class GradeDaoImpl implements GradeDao {
 			br.close();
 		}
 		
-		for (int i = 0; i < params.length; i++) {
-			System.out.println(params[i]);
-		}
 		return params;
 	}
 	
