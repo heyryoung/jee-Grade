@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.grade.web.daoImpls.StudentDaoImpl;
 import com.grade.web.daos.StudentDao;
+import com.grade.web.domains.GradeBean;
 import com.grade.web.serviceImpls.GradeServiceImpl;
 import com.grade.web.serviceImpls.StudentServiceImpl;
-import com.grade.web.studentBeans.GradeBean;
 import com.grade.web.studentServices.GradeService;
 import com.grade.web.studentServices.StudentService;
 

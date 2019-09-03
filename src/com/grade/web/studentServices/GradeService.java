@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.grade.web.studentBeans.GradeBean;
+import com.grade.web.domains.GradeBean;
 
 public interface GradeService {
 

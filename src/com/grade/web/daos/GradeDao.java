@@ -2,7 +2,7 @@ package com.grade.web.daos;
 
 import java.io.IOException;
 
-import com.grade.web.studentBeans.GradeBean;
+import com.grade.web.domains.GradeBean;
 
 public interface GradeDao {
 

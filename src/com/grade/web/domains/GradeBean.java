@@ -1,4 +1,4 @@
-package com.grade.web.studentBeans;
+package com.grade.web.domains;
 
 import java.io.Serializable;
 

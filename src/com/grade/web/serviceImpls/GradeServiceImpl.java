@@ -10,8 +10,8 @@ import com.grade.web.daoImpls.GradeDaoImpl;
 import com.grade.web.daoImpls.StudentDaoImpl;
 import com.grade.web.daos.GradeDao;
 import com.grade.web.daos.StudentDao;
-import com.grade.web.studentBeans.GradeBean;
-import com.grade.web.studentBeans.StudentBean;
+import com.grade.web.domains.GradeBean;
+import com.grade.web.domains.StudentBean;
 import com.grade.web.studentServices.GradeService;
 
 public class GradeServiceImpl implements GradeService {

@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.grade.web.daos.StudentDao;
-import com.grade.web.studentBeans.StudentBean;
+import com.grade.web.domains.StudentBean;
 
 public class StudentDaoImpl implements StudentDao{
 	public static final String FILE_PATH = String.format("C:%sUsers%suser%seclipse-jee%sjee-grade%sWebContent%sresources%stxt%s",
