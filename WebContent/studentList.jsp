@@ -12,6 +12,7 @@
       .tableBody{     border: 3px solid black; padding: 25px; width: 750px;}
     </style>
 <title>성적표</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 

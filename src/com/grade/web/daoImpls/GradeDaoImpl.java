@@ -44,15 +44,15 @@ public class GradeDaoImpl implements GradeDao {
 	public GradeBean[] readeGrade(GradeBean param) throws IOException {
 		
 		//학생의 모든 성적을 읽어 반환한다.
-		GradeBean[] params = new GradeBean[10];
+		GradeBean[] params = new GradeBean[12];
 		String str = "";
 		File file = new File(FILE_PATH+param.getHacbun()+".txt");
-		
+		int cnt=0;
 		if (file.exists()) {
 			FileReader in = new FileReader(file);
 			BufferedReader br = new BufferedReader(in);
 			String line="";
-			int cnt=0;
+
 			String[] temp = new String[7];
 			while ((line = br.readLine()) !=null) {
 				GradeBean pr = new GradeBean();
@@ -68,6 +68,11 @@ public class GradeDaoImpl implements GradeDao {
 				cnt++;
 			}
 			br.close();
+		}
+		
+		// 성적이 입력되지 않은 학생은 디폴트 값을 넣어주기 위해 객체를 주입한다.
+		for (int i = cnt; i < 12; i++) {
+			params[i] = new GradeBean();
 		}
 		
 		return params;

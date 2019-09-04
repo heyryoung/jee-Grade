@@ -74,10 +74,10 @@ public class GradeServiceImpl implements GradeService {
 	
 	public void calGrade(HttpServletRequest request, HttpServletResponse respones) throws IOException {
 		StudentBean[] allStudent = sDao.findAllStudent();
-		GradeBean[][]  tempAllGrade = new  GradeBean[allStudent.length][10];
-		GradeBean[] tempGrade = new GradeBean[10]; 
-		int[][]  tempAllScores = new  int[allStudent.length][10];
-		int gradeLength = (allStudent.length*10);
+		GradeBean[][]  tempAllGrade = new  GradeBean[allStudent.length][12];
+		GradeBean[] tempGrade = new GradeBean[12]; 
+		int[][]  tempAllScores = new  int[allStudent.length][12];
+		int gradeLength = (allStudent.length*12);
 		GradeBean[] allStudentsGrade = new GradeBean[gradeLength];
 
 		int allCnt=0;
@@ -87,20 +87,21 @@ public class GradeServiceImpl implements GradeService {
 			GradeBean temp = new GradeBean();
 			temp.setHacbun(allStudent[i].getHacbun());
 			tempGrade = dao.readeGrade(temp);
-			for (int j = 0; j <10; j++) {
+			for (int j = 0; j <12; j++) {
 				tempAllGrade[i][j]= tempGrade[j];
 			}
 		} 
 		
 		for (int i = 0; i < allStudent.length; i++) {
-			for (int j = 0; j < 10; j++) {
+			for (int j = 0; j < 12; j++) {
+
 				tempAllScores[i][j] = Integer.parseInt(tempAllGrade[i][j].getKor()) + Integer.parseInt(tempAllGrade[i][j].getEng()) +Integer.parseInt(tempAllGrade[i][j].getMath()) + Integer.parseInt(tempAllGrade[i][j].getSoci());
 			}
 		}
 		System.out.println("Rmx");
 		
 		
-	for (int cnt = 0; cnt < 10; cnt++) {
+	for (int cnt = 0; cnt < 12; cnt++) {
 		
 		for (int i = 0; i < allStudent.length-1; i++) {
 			for (int j =  i+1; j < allStudent.length; j++) {
@@ -113,7 +114,7 @@ public class GradeServiceImpl implements GradeService {
 			}
 		}
 	}	
-	for (int cnt = 0; cnt < 10; cnt++) {
+	for (int cnt = 0; cnt < 12; cnt++) {
 	for (int c=0; c < allStudent.length; c++ ) {
 		allStudentsGrade[allCnt] = tempAllGrade[c][cnt];
 		if (gradeLength == allCnt) {

@@ -9,7 +9,7 @@
       .container{   position: relative;   top:45px;  left: 100px; width: 800px;}
       .menu{  border: 3px solid gray; position: relative;   top:10px; width: 750px; font-size: 20px;padding: 25px}
       .head{   position: relative;   top:50px;  left: 20px; height: 100px;}
-      .tableBody{     border: 3px solid black; padding: 25px; width: 750px;}
+      .tableBody{     border: 1px solid black; padding-left: 25px; width: 750px;}
     </style>
 <title>성적표</title>
 </head>
@@ -26,9 +26,9 @@
 <div class="head">
 <h1>성적표</h1><br/><br/>
 </div>
-<div class="tableBody">
-<table style="width: 750px">
-	<tr>
+<div >
+<table style="width: 750px" class="tableBody">
+	<tr id="tableHead">
 		<td>학기</td>
 		<td>학번</td>
 		<td>주번</td>
@@ -47,9 +47,11 @@
 <c:forEach items="${student}" var="dto">
 	<%
 	if(i % 3==0){
-		%>
+	%>
+	</table>
+	<table style="width: 750px" class="tableBody">
 	<tr>
-	<td colspan="10"><h3> <%=i/3 %>	학기</h3> </td>
+	<td colspan="10"><h3><%=(i-3)/12+1 %>학년 <%=((i-3)/3)%4+1 %>	학기</h3> </td>
 	</tr>
 	<%	
 	}

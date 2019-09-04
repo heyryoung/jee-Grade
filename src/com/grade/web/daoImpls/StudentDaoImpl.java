@@ -38,7 +38,7 @@ public class StudentDaoImpl implements StudentDao{
 	
 	public StudentBean[] findAllStudent() throws IOException {
 		
-		StudentBean[] params = new StudentBean[10];
+		StudentBean[] params = new StudentBean[12];
 		String str = "";
 		File file = new File(FILE_PATH+"Student.txt");
 		int cnt=0;
