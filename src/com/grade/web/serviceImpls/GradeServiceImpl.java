@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.grade.web.daoImpls.GradeDaoImpl;
 import com.grade.web.daoImpls.StudentDaoImpl;
@@ -71,6 +72,61 @@ public class GradeServiceImpl implements GradeService {
 		return ;
 	}
 	
+	public void calGrade(HttpServletRequest request, HttpServletResponse respones) throws IOException {
+		StudentBean[] allStudent = sDao.findAllStudent();
+		GradeBean[][]  tempAllGrade = new  GradeBean[allStudent.length][10];
+		GradeBean[] tempGrade = new GradeBean[10]; 
+		int[][]  tempAllScores = new  int[allStudent.length][10];
+		int gradeLength = (allStudent.length*10);
+		GradeBean[] allStudentsGrade = new GradeBean[gradeLength];
+
+		int allCnt=0;
+		
+		// 학생의 성적을 모두 받아옴
+		for (int i = 0; i < allStudent.length; i++) {
+			GradeBean temp = new GradeBean();
+			temp.setHacbun(allStudent[i].getHacbun());
+			tempGrade = dao.readeGrade(temp);
+			for (int j = 0; j <10; j++) {
+				tempAllGrade[i][j]= tempGrade[j];
+			}
+		} 
+		
+		for (int i = 0; i < allStudent.length; i++) {
+			for (int j = 0; j < 10; j++) {
+				tempAllScores[i][j] = Integer.parseInt(tempAllGrade[i][j].getKor()) + Integer.parseInt(tempAllGrade[i][j].getEng()) +Integer.parseInt(tempAllGrade[i][j].getMath()) + Integer.parseInt(tempAllGrade[i][j].getSoci());
+			}
+		}
+		System.out.println("Rmx");
+		
+		
+	for (int cnt = 0; cnt < 10; cnt++) {
+		
+		for (int i = 0; i < allStudent.length-1; i++) {
+			for (int j =  i+1; j < allStudent.length; j++) {
+				if (tempAllScores[i][cnt] < tempAllScores[j][cnt]  ) {
+					GradeBean  temp = new GradeBean();
+					temp = tempAllGrade[i][cnt] ;
+					tempAllGrade[i][cnt]  = tempAllGrade[j][cnt] ; 
+					tempAllGrade[j][cnt]  = temp;
+				}
+			}
+		}
+	}	
+	for (int cnt = 0; cnt < 10; cnt++) {
+	for (int c=0; c < allStudent.length; c++ ) {
+		allStudentsGrade[allCnt] = tempAllGrade[c][cnt];
+		if (gradeLength == allCnt) {
+			break;
+		}
+		allCnt++;
+		}
+	}
 	
+	
+		request.setAttribute("studentLength", allStudent.length);
+		request.setAttribute("student", allStudentsGrade);
+		return ;
+	}
 	
 }

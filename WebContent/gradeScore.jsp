@@ -20,6 +20,7 @@
 	
 	<a href = "<%=request.getContextPath()%>/studentList.do" >학생명부</a>       
 	<a href = "<%=request.getContextPath()%>/index.jsp">성적입력</a>      
+	<a href = "<%=request.getContextPath()%>/allStudentGrade.do">학기별 등수</a>      
 	
 </div>
 <div class="head">

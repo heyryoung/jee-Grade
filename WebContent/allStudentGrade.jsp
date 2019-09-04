@@ -20,7 +20,7 @@
 	
 	<a href = "<%=request.getContextPath()%>/studentList.do" >학생명부</a>       
 	<a href = "<%=request.getContextPath()%>/index.jsp">성적입력</a>      
-		<a href = "<%=request.getContextPath()%>/allStudentGrade.do">학기별 등수</a>      
+	<a href = "<%=request.getContextPath()%>/allStudentGrade.do">학기별 등수</a>      
 	
 </div>
 <div class="head">
@@ -29,17 +29,47 @@
 <div class="tableBody">
 <table style="width: 750px">
 	<tr>
+		<td>학기</td>
 		<td>학번</td>
 		<td>주번</td>
 		<td>이름</td>
+		<td>국어</td>
+		<td>영어</td>
+		<td>수학</td>
+		<td>사회</td>
+		<td>총점</td>
+		<td>평균</td>
 	</tr>
+<%-- <c:forEach begin="1" end="${studentLength}"> --%>
+<%
+	int i = 3 ; 
+%>
 <c:forEach items="${student}" var="dto">
+	<%
+	if(i % 3==0){
+		%>
 	<tr>
-		<td><a href = "<%=request.getContextPath()%>/gradeScore.do?hacbun=${dto.hacbun}&jubun=${dto.jubun}">${dto.hacbun}</a></td>
+	<td colspan="10"><h3> <%=i/3 %>	학기</h3> </td>
+	</tr>
+	<%	
+	}
+	 %>
+	<tr style="border-bottom-width: 3px">
+		<td ></td>
+		<td>${dto.hacbun}</td>
 		<td>${dto.jubun}</td>
 		<td>${dto.name}</td>
-	</tr>
-</c:forEach>
+		<td>${dto.kor}</td>
+		<td>${dto.eng}</td>
+		<td>${dto.math}</td>
+		<td>${dto.soci}</td>
+		<td>${dto.kor+dto.eng+dto.math+dto.soci}</td>
+		<td>${(dto.kor+dto.eng+dto.math+dto.soci) div 4}</td>
+	</tr >
+<%
+	i++;
+%>
+	</c:forEach> 
 </table>
 </div>
 </div>

@@ -66,6 +66,10 @@ public class GradeController extends HttpServlet {
 			ss = new StudentServiceImpl();
 			ss.readAllStudent(request,response);
 			viewPage = "studentList.jsp";
+		} else if(com.equals("/allStudentGrade.do")) {
+			gs = new GradeServiceImpl();
+			gs.calGrade(request,response);
+			viewPage = "allStudentGrade.jsp";
 		} 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -41,12 +41,11 @@ public class StudentDaoImpl implements StudentDao{
 		StudentBean[] params = new StudentBean[10];
 		String str = "";
 		File file = new File(FILE_PATH+"Student.txt");
-		
+		int cnt=0;
 		if (file.exists()) {
 			FileReader in = new FileReader(file);
 			BufferedReader br = new BufferedReader(in);
 			String line="";
-			int cnt=0;
 			String[] temp = new String[3];
 			while ((line = br.readLine()) !=null) {
 				StudentBean sb = new StudentBean();
@@ -60,10 +59,13 @@ public class StudentDaoImpl implements StudentDao{
 			br.close();
 		}
 		
-		for (int i = 0; i < params.length; i++) {
-			System.out.println(params[i]);
+		StudentBean[] newParams = new StudentBean[cnt];
+		
+		for (int i = 0; i < newParams.length; i++) {
+			newParams[i] = params[i];
 		}
-		return params;
+		
+		return newParams;
 	}
 	
 	
