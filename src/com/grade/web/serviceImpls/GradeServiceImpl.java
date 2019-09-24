@@ -72,6 +72,8 @@ public class GradeServiceImpl implements GradeService {
 		return ;
 	}
 	
+	
+	//모든 학생의 모든 학기 성적을 불러와 학기별 등수를 계산하여 1차원 배열에 순서대로 입력함.
 	public void calGrade(HttpServletRequest request, HttpServletResponse respones) throws IOException {
 		StudentBean[] allStudent = sDao.findAllStudent();
 		GradeBean[][]  tempAllGrade = new  GradeBean[allStudent.length][12];
@@ -100,9 +102,10 @@ public class GradeServiceImpl implements GradeService {
 		}
 		System.out.println("Rmx");
 		
-		
+	//학기 수 만큼 비교 해야함. 	
 	for (int cnt = 0; cnt < 12; cnt++) {
 		
+		//학기 별 학생 성적 비교 
 		for (int i = 0; i < allStudent.length-1; i++) {
 			for (int j =  i+1; j < allStudent.length; j++) {
 				if (tempAllScores[i][cnt] < tempAllScores[j][cnt]  ) {
@@ -114,6 +117,9 @@ public class GradeServiceImpl implements GradeService {
 			}
 		}
 	}	
+	
+	
+	//비교 후 1차원 배열에 입력함.
 	for (int cnt = 0; cnt < 12; cnt++) {
 	for (int c=0; c < allStudent.length; c++ ) {
 		allStudentsGrade[allCnt] = tempAllGrade[c][cnt];
@@ -123,7 +129,6 @@ public class GradeServiceImpl implements GradeService {
 		allCnt++;
 		}
 	}
-	
 	
 		request.setAttribute("studentLength", allStudent.length);
 		request.setAttribute("student", allStudentsGrade);

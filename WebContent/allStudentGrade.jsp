@@ -40,18 +40,18 @@
 		<td>총점</td>
 		<td>평균</td>
 	</tr>
-<%-- <c:forEach begin="1" end="${studentLength}"> --%>
 <%
 	int i = 3 ; 
+	int studentLength =Integer.parseInt(String.valueOf( request.getAttribute("studentLength")));
 %>
 <c:forEach items="${student}" var="dto">
 	<%
-	if(i % 3==0){
+	if(i % studentLength==0){
 	%>
 	</table>
 	<table style="width: 750px" class="tableBody">
 	<tr>
-	<td colspan="10"><h3><%=(i-3)/12+1 %>학년 <%=((i-3)/3)%4+1 %>	학기</h3> </td>
+	<td colspan="10"><h3><%=(i-studentLength)/12+1 %>학년 <%=((i-studentLength)/studentLength)%4+1 %>	학기</h3> </td>
 	</tr>
 	<%	
 	}

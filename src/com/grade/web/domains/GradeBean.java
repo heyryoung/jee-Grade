@@ -6,7 +6,14 @@ public class GradeBean implements Serializable{
 
 	private static final long serialVersionID = 1L;
 	
-	private String hacbun="", jubun="", name="", kor="0", eng="0", math="0", soci="0";
+	private String hacbun, jubun, name, kor, eng, math, soci;
+	
+	
+	{
+		hacbun=""; jubun=""; name=""; kor="0"; eng="0"; math="0"; soci="0";
+		
+	}
+	
 
 	public String getHacbun() {
 		return hacbun;
