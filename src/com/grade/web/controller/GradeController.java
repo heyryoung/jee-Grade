@@ -74,6 +74,9 @@ public class GradeController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 		
+		
+		//dd
+		
 	}
 	
 	
