@@ -31,6 +31,7 @@ public class GradeController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet 진입./////"); 
+		System.out.println("doGet 진입./////"); 
 		actionDo(request, response);
 	}
 
@@ -54,6 +55,7 @@ public class GradeController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
+		
 		if(com.equals("/write.do")) {
 			gs = new GradeServiceImpl();
 			gs.createGrade(param);
@@ -75,8 +77,11 @@ public class GradeController extends HttpServlet {
 		dispatcher.forward(request, response);
 		
 		
-		//dd
 		
+		
+		
+		//dd - ddd
+		//dd
 	}
 	
 	
